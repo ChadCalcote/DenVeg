@@ -1,5 +1,7 @@
 Features:
 
+Making Notes To Push
+
 Food Item CRUD
 Checkins / Reviews
 Review Feed
