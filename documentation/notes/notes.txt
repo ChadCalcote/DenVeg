@@ -1,0 +1,54 @@
+Features:
+
+Food Item CRUD
+Checkins / Reviews
+Review Feed
+Profile
+
+Search
+    - User capability
+    - Look for food items
+        - By Food Type
+        - By Search Term (text for a food item)
+
+Pages
+
+Homepage
+    - DenVeg description
+    - DenVeg logo
+    - Features displayed
+    - Sign In Button
+    - Create An Account Button
+
+Login Page
+    - Simple login form
+
+Profile Page
+    - Profile Component
+    - Friends
+    - Reviews
+    - Food Components with Links
+
+Food Page
+    - Listed Reviews
+    - Rating
+    - Description
+    - Ate Button
+    - Price (confirmed logo)
+    - Checkin with this food (button, modal pops up)
+    - Highlighted review ?
+    - All users can view this page
+
+Food Item Management Section
+    - Users can add food items to the website
+
+Database Tables
+    - Users
+        -Has Many Food Items
+
+    - Food Items
+        - Has Many Users
+        - Likes
+        - Rating
+        - Description
+

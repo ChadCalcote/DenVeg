@@ -1,0 +1,32 @@
+The data of your program is what it is all about
+
+All tables will have:
+    id
+    createdAt
+    updatedAt
+
+Users
+    username
+    email
+    password
+    foodItems
+
+
+Food items
+    name
+    description
+    price
+    restaurantId
+    isDeal
+    photoURL
+    reviewId
+
+Reviews
+    foodId
+    userId
+
+
+Restaurant
+    name
+    address
+    isVegan
