@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
     reviewText: DataTypes.TEXT
   }, {});
   Reviews.associate = function(models) {
+    Reviews.belongsTo(models.User, { foreignKey: "userId" });
+    Reviews.belongsTo(models.FoodItem, { foreignKey: "foodItemId" });
     // associations can be defined here
   };
   return Reviews;

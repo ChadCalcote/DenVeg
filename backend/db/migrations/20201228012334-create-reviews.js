@@ -10,7 +10,7 @@ module.exports = {
       },
       heading: {
         type: Sequelize.STRING(50),
-        allowNull: false
+        allowNull: false,
       },
       rating: {
         type: Sequelize.INTEGER,
@@ -18,18 +18,20 @@ module.exports = {
       },
       foodItemId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: { model: "FoodItems", key: "id" },
       },
       userId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: { model: "Users", key: "id" },
       },
       photoUrl: {
         type: Sequelize.STRING(1000),
       },
       reviewText: {
         type: Sequelize.TEXT,
-        allowNull: false
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

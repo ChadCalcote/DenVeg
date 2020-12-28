@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     isVegan: DataTypes.BOOLEAN
   }, {});
   Restaurant.associate = function(models) {
+    Restaurant.hasMany(models.FoodItem, { foreignKey: "restaurantId" });
     // associations can be defined here
   };
   return Restaurant;
