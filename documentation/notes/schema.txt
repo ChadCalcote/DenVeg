@@ -5,28 +5,33 @@ All tables will have:
     createdAt
     updatedAt
 
-Users
-    username
-    email
+Users - Done
+    username (string)
+    email (string)
     password
-    foodItems
 
+Users_FoodItem - Done
+    foodItemId (FK) (integer)
+    userId (FK) (integer)
 
-Food items
+FoodItem - belongsTo Restuarant (Don)
+    name (string)
+    description (text)
+    price (integer)
+    views (integer)
+    restaurantId (FK) (integer)
+    isDeal (boolean)
+    photoURL (string)
+
+Reviews - belongsTo foodItem, belongsTo user (Done)
+    rating
+    foodItemId (FK)
+    userId (FK)
+    photoUrl
+
+Restaurant - Done
     name
-    description
-    price
-    restaurantId
-    isDeal
-    photoURL
-    reviewId
-
-Reviews
-    foodId
-    userId
-
-
-Restaurant
-    name
+    bio
     address
+    photoURL,
     isVegan
