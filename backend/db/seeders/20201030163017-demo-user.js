@@ -4,29 +4,33 @@ const bcrypt = require("bcryptjs");
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Users', [
-      {
-        email: 'demo@user.io',
-        username: 'Demo-lition',
-        hashedPassword: bcrypt.hashSync('password'),
-      },
-      {
-        email: faker.internet.email(),
-        username: 'FakeUser1',
-        hashedPassword: bcrypt.hashSync(faker.internet.password()),
-      },
-      {
-        email: faker.internet.email(),
-        username: 'FakeUser2',
-        hashedPassword: bcrypt.hashSync(faker.internet.password()),
-      },
-    ], {});
+    return queryInterface.bulkInsert(
+      "Users",
+      [
+        {
+          email: "demo@user.io",
+          username: "VegHead",
+          hashedPassword: bcrypt.hashSync("password"),
+        },
+        {
+          email: faker.internet.email(),
+          username: "NoMeat4Me",
+          hashedPassword: bcrypt.hashSync("vegan"),
+        },
+        {
+          email: faker.internet.email(),
+          username: "PlantEater",
+          hashedPassword: bcrypt.hashSync("veggies"),
+        },
+      ],
+      {}
+    );
   },
 
   down: async (queryInterface, Sequelize) => {
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete('Users', {
-      username: { [Op.in]: ['Demo-lition', 'FakeUser1', 'FakeUser2'] }
+      username: { [Op.in]: ['VegHead', 'NoMeat4Me', 'PlantEater'] }
     }, {});
   }
 };
