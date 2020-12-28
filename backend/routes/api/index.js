@@ -35,6 +35,10 @@ router.get('/restore-user', restoreUser, (req, res) => {
 //   }
 // );
 
+router.get('/testing', (req, res) => {
+  res.json(["VegHead"]);
+});
+
 router.post('/test', function (req, res) {
   res.json({ requestBody: req.body });
 });
