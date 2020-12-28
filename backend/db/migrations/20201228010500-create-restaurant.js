@@ -14,7 +14,8 @@ module.exports = {
       },
       bio: {
         type: Sequelize.TEXT,
-        defaultValue: 'No Bio Yet! Stay Tuned...'
+        allowNull: false,
+        defaultValue: "No Bio Yet! Stay Tuned...",
       },
       address: {
         type: Sequelize.STRING,
@@ -23,7 +24,9 @@ module.exports = {
       },
       photoURL: {
         type: Sequelize.STRING(1000),
-        defaultValue: 'https://webstockreview.net/images/restaurants-clipart.png'
+        allowNull: false,
+        defaultValue:
+          "https://webstockreview.net/images/restaurants-clipart.png",
       },
       isVegan: {
         type: Sequelize.BOOLEAN,
