@@ -21,8 +21,10 @@ module.exports = {
       },
       views: {
         type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
       },
-      restuarantId: {
+      restaurantId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { model: "Restaurants", key: "id" },
@@ -33,6 +35,7 @@ module.exports = {
       },
       photoUrl: {
         type: Sequelize.STRING(1000),
+        allowNull: false,
         defaultValue:
           "https://webstockreview.net/images/dish-clipart-purple-food-12.png",
       },
