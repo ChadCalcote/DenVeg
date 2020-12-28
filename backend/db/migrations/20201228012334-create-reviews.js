@@ -14,7 +14,7 @@ module.exports = {
       },
       rating: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
       foodItemId: {
         type: Sequelize.INTEGER,

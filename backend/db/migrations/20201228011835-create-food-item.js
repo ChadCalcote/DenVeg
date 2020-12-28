@@ -25,6 +25,7 @@ module.exports = {
       restuarantId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: { model: "Restaurants", key: "id" },
       },
       isSpecial: {
         type: Sequelize.BOOLEAN,
@@ -32,6 +33,8 @@ module.exports = {
       },
       photoUrl: {
         type: Sequelize.STRING(1000),
+        defaultValue:
+          "https://webstockreview.net/images/dish-clipart-purple-food-12.png",
       },
       createdAt: {
         allowNull: false,
