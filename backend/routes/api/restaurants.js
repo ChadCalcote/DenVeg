@@ -63,4 +63,66 @@ router.get(
   })
 );
 
+// Get Restaurant By ID
+router.get(
+  "/:id(\\d+)",
+  asyncHandler(async (req, res, next) => {
+    const restaurant = await Restaurant.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (restaurant) {
+      res.json({
+        restaurant
+      });
+    } else {
+      next(restaurantNotFoundError(req.params.id));
+    }
+  })
+);
+
+router.get(
+  "/:id(\\d+)",
+  asyncHandler(async (req, res, next) => {
+    const foodItem = await FoodItem.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (foodItem) {
+      res.json({
+        foodItem,
+      });
+    } else {
+      next(foodItemNotFoundError(req.params.id));
+    }
+  })
+);
+
+// Get all food items under $10
+router.get(
+  "/vegan",
+  asyncHandler(async (req, res, next) => {
+    const Op = Sequelize.Op;
+    const veganRestaurants = await Restaurant.findAll({
+      where: {
+        isVegan: {
+          [Op.not]: false,
+        },
+      },
+    });
+    if (veganRestaurants) {
+      res.json({
+        veganRestaurants,
+      });
+    } else {
+      const err = new Error("Vegan Restaurants not found below that price");
+      err.status = 404;
+      err.title = "Vegan Restaurants not found.";
+      throw err;
+    }
+  })
+);
+
 module.exports = router;

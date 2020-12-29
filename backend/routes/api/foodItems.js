@@ -42,6 +42,7 @@ const validateFoodItem = [
     .withMessage("Must specify a photo URL."),
 ];
 
+// Get all food items from database
 router.get(
   "/",
   asyncHandler(async (req, res, next) => {
@@ -57,6 +58,50 @@ router.get(
       res.json({ foodItems });
     } else {
       const err = new Error("Food Items not found");
+      err.status = 404;
+      err.title = "Food Items not found.";
+      throw err;
+    }
+  })
+);
+
+// Get Food Item by ID
+router.get(
+  "/:id(\\d+)",
+  asyncHandler(async (req, res, next) => {
+    const foodItem = await FoodItem.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (foodItem) {
+      res.json({
+        foodItem
+      });
+    } else {
+      next(foodItemNotFoundError(req.params.id));
+    }
+  })
+);
+
+// Get all food items under $10
+router.get(
+  "/cheap",
+  asyncHandler(async (req, res, next) => {
+    const Op = Sequelize.Op;
+    const cheapItems = await FoodItem.findAll({
+      where: {
+        price: {
+          [Op.lte]: 1000,
+        },
+      },
+    });
+    if (cheapItems) {
+      res.json({
+        cheapItems,
+      });
+    } else {
+      const err = new Error("Food Items not found below that price");
       err.status = 404;
       err.title = "Food Items not found.";
       throw err;

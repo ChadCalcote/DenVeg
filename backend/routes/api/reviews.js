@@ -66,4 +66,42 @@ router.get(
   })
 );
 
+// Get Review(s) by food item
+router.get(
+  "/foodItem/:id(\\d+)",
+  asyncHandler(async (req, res, next) => {
+    const review = await Review.findAll({
+      where: {
+        foodItemId: req.params.id,
+      },
+    });
+    if (review) {
+      res.json({
+        review,
+      });
+    } else {
+      next(reviewNotFoundError(req.params.id));
+    }
+  })
+);
+
+// Get Review(s) by User
+router.get(
+  "/user/:id(\\d+)",
+  asyncHandler(async (req, res, next) => {
+    const review = await Review.findAll({
+      where: {
+        userId: req.params.id,
+      },
+    });
+    if (review) {
+      res.json({
+        review,
+      });
+    } else {
+      next(reviewNotFoundError(req.params.id));
+    }
+  })
+);
+
 module.exports = router;
