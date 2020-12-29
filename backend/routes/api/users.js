@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler');
 
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User, Sequelize} = require('../../db/models');
 
 const router = express.Router();
 
@@ -38,6 +38,52 @@ router.post(
     return res.json({
       user
     });
+  })
+);
+
+// Get all users
+router.get(
+  "/",
+  asyncHandler(async (req, res, next) => {
+    const Op = Sequelize.Op;
+    const users = await User.findAll({
+      where: {
+        id: {
+          [Op.gte]: 1,
+        },
+      },
+    });
+    if (users) {
+      res.json({
+        users
+      });
+    } else {
+      const err = new Error("Users not found");
+      err.status = 404;
+      err.title = "Users not found.";
+      throw err;
+    }
+  })
+);
+
+
+// Get user by Id
+router.get(
+  "/:id(\\d+)",
+  asyncHandler(async (req, res, next) => {
+    const id = req.params.id
+    const user = await User.findByPk(id);
+    if (user) {
+      res.json({
+        username: user.username,
+        userId: id,
+      });
+    } else {
+      const err = new Error("User not found");
+      err.status = 404;
+      err.title = "User not found.";
+      throw err;
+    }
   })
 );
 

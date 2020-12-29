@@ -41,4 +41,40 @@ router.get(
   })
 );
 
+router.get(
+  "/:id(\\d+)",
+  asyncHandler(async (req, res, next) => {
+    const id = req.params.id;
+    const userFoodItem = await Users_FoodItem.findAll(id);
+    if (userFoodItem) {
+      res.json({
+        Users_FoodItem
+      });
+    } else {
+      const err = new Error("User not found");
+      err.status = 404;
+      err.title = "User not found.";
+      throw err;
+    }
+  })
+);
+
+router.get(
+  "/user/:id(\\d+)",
+  asyncHandler(async (req, res, next) => {
+    const userFoodItem = await Users_FoodItem.findAll({
+      where: {
+        userId: req.params.id,
+      },
+    });
+    if (userFoodItem) {
+      res.json({
+        userFoodItem,
+      });
+    } else {
+      next(userFoodItemNotFoundError(req.params.id));
+    }
+  })
+);
+
 module.exports = router;
