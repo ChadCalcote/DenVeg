@@ -1,7 +1,10 @@
 const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
-
+const restaurantsRouter = require('./restaurants.js');
+const foodItemsRouter = require('./foodItems.js');
+const reviewsRouter = require('./reviews.js');
+const userFoodItemsRouter = require('./users_foodItems');
 // GET /api/set-token-cookie
 const asyncHandler = require('express-async-handler');
 const { setTokenCookie } = require('../../utils/auth.js');
@@ -46,5 +49,13 @@ router.post('/test', function (req, res) {
 router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
+
+router.use('/restaurants', restaurantsRouter);
+
+router.use("/foodItems", foodItemsRouter);
+
+router.use("/reviews", reviewsRouter);
+
+router.use("/userFoodItems", userFoodItemsRouter);
 
 module.exports = router;

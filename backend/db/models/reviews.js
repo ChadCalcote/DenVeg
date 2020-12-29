@@ -2,8 +2,8 @@
 
 const { Validator } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  const Reviews = sequelize.define(
-    "Reviews",
+  const Review = sequelize.define(
+    "Review",
     {
       heading: DataTypes.STRING,
       rating: {
@@ -19,10 +19,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  Reviews.associate = function(models) {
-    Reviews.belongsTo(models.User, { foreignKey: "userId" });
-    Reviews.belongsTo(models.FoodItem, { foreignKey: "foodItemId" });
+  Review.associate = function(models) {
+    Review.belongsTo(models.User, { foreignKey: "userId" });
+    Review.belongsTo(models.FoodItem, { foreignKey: "foodItemId" });
     // associations can be defined here
   };
-  return Reviews;
+  return Review;
 };
