@@ -23,6 +23,8 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-      return queryInterface.bulkDelete("Users_FoodItems", null, {});
+      return queryInterface.bulkDelete("Users_FoodItems", {
+        id: { [Op.between]: [1, 3] },
+      });
   }
 };
