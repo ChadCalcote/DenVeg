@@ -54,3 +54,14 @@ Database Tables
         - Rating
         - Description
 
+
+// Picture of Restaurant
+
+// Reference
+// URL
+// Store a string that is a URL Reference to where the data is
+
+// Data
+// .jpg/.png/
+// 0101010101010101
+// Possible to store your image DATA in your database (hard to scale)

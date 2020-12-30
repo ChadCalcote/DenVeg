@@ -38,6 +38,8 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-      return queryInterface.bulkDelete('Reviews', null, {});
+      return queryInterface.bulkDelete("Reviews", {
+        id: { [Op.between]: [1, 3] },
+      });
   }
 };
