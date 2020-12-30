@@ -125,4 +125,55 @@ router.get(
   })
 );
 
+// Create a New Restaurant
+router.post(
+  "/create",
+  validateRestaurant,
+  asyncHandler(async (req, res, next) => {
+    const { name, bio, address, photoURL, isVegan } = req.body;
+    const foodItem = db.FoodItem.build({
+      name,
+      bio,
+      address,
+      photoURL,
+      isVegan,
+    });
+    const validatorErrors = validationResult(req);
+    if (validatorErrors.isEmpty()) {
+      await foodItem.save();
+      res.json({
+        name,
+        bio,
+        address,
+        photoURL,
+        isVegan
+      });
+    } else {
+      restaurantErrors = validatorErrors.array().map((error) => error.msg);
+      console.log(restaurantErrors);
+      res.json({ restaurantErrors });
+    }
+  })
+);
+
+// Delete a Restaurant
+router.delete(
+  "/:id(\\d+)/delete",
+  asyncHandler(async (req, res, next) => {
+    const { restaurant } = req.body;
+    const destroyedRestaurant = restaurant;
+    const foundRestaurant = await Restaurant.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (foundRestaurant) {
+      await foundRestaurant.destroy();
+      res.json({ message: `${destroyedRestaurant} has been deleted.` });
+    } else {
+      next(restaurantNotFoundError(req.params.id));
+    }
+  })
+);
+
 module.exports = router;
