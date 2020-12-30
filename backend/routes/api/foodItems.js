@@ -109,4 +109,48 @@ router.get(
   })
 );
 
+// Create a new food item
+router.post(
+  "/create",
+  validateFoodItem,
+  asyncHandler(async (req, res, next) => {
+    const { name, description, price, restaurantId, isSpecial } = req.body;
+    const foodItem = db.FoodItem.build({ name, description, price, restaurantId, isSpecial });
+    const validatorErrors = validationResult(req);
+    if (validatorErrors.isEmpty()) {
+      await foodItem.save();
+      res.json({
+        name,
+        description,
+        price,
+        restaurantId
+      });
+    } else {
+      foodItemErrors = validatorErrors.array().map((error) => error.msg);
+      console.log(foodItemErrors);
+      res.json({ foodItemErrors });
+    }
+  })
+);
+
+// Delete a Food Item
+router.delete(
+  "/:id(\\d+)/delete",
+  asyncHandler(async (req, res, next) => {
+    const { foodItem } = req.body;
+    const destroyedFoodItem = foodItem;
+    const item = await FoodItem.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (item) {
+      await item.destroy();
+      res.json({ message: `${destroyedFoodItem} has been deleted.` });
+    } else {
+      next(foodItemNotFoundError(req.params.id));
+    }
+  })
+);
+
 module.exports = router;

@@ -104,4 +104,64 @@ router.get(
   })
 );
 
+// Create a New Review
+router.post(
+  "/create",
+  validateReview,
+  asyncHandler(async (req, res, next) => {
+    const { heading, rating, foodItemId, photoUrl, reviewText } = req.body;
+    const review = db.FoodItem.build({
+      heading,
+      rating,
+      foodItemId,
+      userId: req.session.auth.userId,
+      photoUrl,
+      reviewText,
+    });
+    const validatorErrors = validationResult(req);
+    if (validatorErrors.isEmpty()) {
+      await review.save();
+      res.json({
+        heading,
+        rating,
+        foodItemId,
+        userId,
+        photoUrl,
+        reviewText
+      });
+    } else {
+      reviewErrors = validatorErrors.array().map((error) => error.msg);
+      console.log(reviewErrors);
+      res.json({ reviewErrors });
+    }
+  })
+);
+
+// Delete a Review
+router.delete(
+  "/:id(\\d+)/delete",
+  asyncHandler(async (req, res, next) => {
+    const { reviewName } = req.body;
+    const destroyedReview = reviewName;
+    const foundReview = await Review.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (req.session.auth.userId !== review.userId) {
+      const err = new Error("Unauthorized");
+      err.status = 401;
+      err.message = "You're not authorized to delete this review.";
+      err.title = "Unauthorized";
+      throw err;
+    }
+    if (foundReview) {
+      await foundReview.destroy();
+      res.json({ message: `${destroyedReview} has been deleted.` });
+    } else {
+      next(reviewNotFoundError(req.params.id));
+    }
+  })
+);
+
 module.exports = router;
