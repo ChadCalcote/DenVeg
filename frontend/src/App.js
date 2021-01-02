@@ -6,6 +6,8 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from './components/Home';
+import UploadPictureForm from './components/UploadPictureForm';
+import FoodItemsPage from "./components/FoodItemsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +29,12 @@ function App() {
           </Route>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route path='/testing'>
+            <UploadPictureForm />
+          </Route>
+          <Route path='/foodItems'>
+            <FoodItemsPage />
           </Route>
         </Switch>
       )}

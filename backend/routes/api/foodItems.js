@@ -55,7 +55,7 @@ router.get(
       },
     });
     if (foodItems) {
-      res.json({ foodItems });
+      res.json({ foodItems: foodItems });
     } else {
       const err = new Error("Food Items not found");
       err.status = 404;
