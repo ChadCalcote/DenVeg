@@ -23,7 +23,7 @@ module.exports = {
         allowNull: false,
       },
       photoURL: {
-        type: Sequelize.STRING(1000),
+        type: Sequelize.STRING(100000),
         allowNull: false,
         defaultValue:
           "https://webstockreview.net/images/restaurants-clipart.png",

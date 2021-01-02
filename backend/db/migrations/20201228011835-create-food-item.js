@@ -34,7 +34,7 @@ module.exports = {
         allowNull: false,
       },
       photoUrl: {
-        type: Sequelize.STRING(1000),
+        type: Sequelize.STRING(100000),
         allowNull: false,
         defaultValue:
           "https://webstockreview.net/images/dish-clipart-purple-food-12.png",

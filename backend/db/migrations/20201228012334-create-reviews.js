@@ -27,7 +27,7 @@ module.exports = {
         references: { model: "Users", key: "id" },
       },
       photoUrl: {
-        type: Sequelize.STRING(1000),
+        type: Sequelize.STRING(100000),
       },
       reviewText: {
         type: Sequelize.TEXT,
