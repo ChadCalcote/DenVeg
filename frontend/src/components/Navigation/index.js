@@ -11,7 +11,9 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <div>
+        <ProfileButton user={sessionUser} />
+      </div>
     );
   } else {
     sessionLinks = (
@@ -25,7 +27,7 @@ function Navigation({ isLoaded }){
   return (
     <ul id="top-nav-bar">
       <li>
-        <h2>Nav Bar Logo</h2>
+        <h2>DenVeg</h2>
       </li>
       <li>
         <NavLink exact to="/">Home</NavLink>

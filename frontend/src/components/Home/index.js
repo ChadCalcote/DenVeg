@@ -1,5 +1,5 @@
 import "./index.css";
-import picture from './VeganImage2.jpg';
+import picture from './DenVegLogo.png';
 
 import { useSelector } from 'react-redux';
 
