@@ -15,9 +15,9 @@ const Home = () => {
       <div>
         <div id="home-page-container">
           <img alt="vegan" src={picture} />
-          <div id="home-page-overlay">
+          {/* <div id="home-page-overlay">
             <h1>Welcome to DenVeg!</h1>
-          </div>
+          </div> */}
         </div>
         {loggedInUser && (
           <h3>

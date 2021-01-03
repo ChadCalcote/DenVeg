@@ -4,6 +4,16 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
+import picture from './Broccoli.png';
+
+/* <ul id="top-nav-bar"> */
+      /* <li>
+        <h2>DenVeg</h2>
+      </li>
+      <li>
+        <NavLink exact to="/">Home</NavLink> */
+    //   </li>
+    // </ul>
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -12,6 +22,12 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <div>
+        <NavLink className="nav-link-button" to="/restaurants">
+          Restaurants
+        </NavLink>
+        <NavLink className="nav-link-button" to="/foodItems">
+          Food Items
+        </NavLink>
         <ProfileButton user={sessionUser} />
       </div>
     );
@@ -25,15 +41,12 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <ul id="top-nav-bar">
-      <li>
-        <h2>DenVeg</h2>
-      </li>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <div className="top-nav-bar">
+      <NavLink className="header nav-link" exact to="/">
+        Home
+      </NavLink>
+      <div className="nav-container">{isLoaded && sessionLinks}</div>
+    </div>
   );
 }
 
