@@ -28,9 +28,6 @@ const validateFoodItem = [
   check("description")
     .exists({ checkFalsy: true })
     .withMessage("Description must be filled out"),
-  check("views")
-    .exists({ checkFalsy: true })
-    .withMessage("Amount of views must be present."),
   check("restaurantId")
     .exists({ checkFalsy: true })
     .withMessage("Restaurant ID must be specified."),
@@ -114,11 +111,13 @@ router.post(
   "/create",
   validateFoodItem,
   asyncHandler(async (req, res, next) => {
-    const { name, description, price, restaurantId, isSpecial } = req.body;
-    const foodItem = db.FoodItem.build({ name, description, price, restaurantId, isSpecial });
+    console.log(req.body);
     const validatorErrors = validationResult(req);
+    const { name, description, price, restaurantId, isSpecial, photoUrl } = req.body;
+    const foodItem = db.FoodItem.build({ name, description, price, restaurantId, isSpecial, photoUrl });
     if (validatorErrors.isEmpty()) {
       await foodItem.save();
+      res.status(200)
       res.json({
         name,
         description,
@@ -126,6 +125,7 @@ router.post(
         restaurantId
       });
     } else {
+      res.status(400);
       foodItemErrors = validatorErrors.array().map((error) => error.msg);
       console.log(foodItemErrors);
       res.json({ foodItemErrors });

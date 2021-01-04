@@ -21,7 +21,6 @@ module.exports = {
       },
       views: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         defaultValue: 0,
       },
       restaurantId: {
