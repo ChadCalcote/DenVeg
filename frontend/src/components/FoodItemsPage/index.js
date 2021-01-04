@@ -8,6 +8,7 @@ const FoodItem = ({theFoodItem}) => {
     return (
         <div>
             <h3>{theFoodItem.name}</h3>
+            <p>{theFoodItem.description}</p>
             <img alt="foodItem" src={theFoodItem.photoUrl} />
         </div>
     )
@@ -34,7 +35,7 @@ const FoodItemsPage = () => {
     });
 
     if (response) {
-      window.alert('Restaurant Added!');
+      window.alert('Food Item Added!');
     } else {
       window.alert('ERROR');
     }

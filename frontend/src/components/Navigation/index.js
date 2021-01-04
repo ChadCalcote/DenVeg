@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
-import logo from './DenVegLogo.png';
 
 /* <ul id="top-nav-bar"> */
       /* <li>
@@ -27,6 +26,9 @@ function Navigation({ isLoaded }){
         </NavLink>
         <NavLink className="nav-link-button" to="/foodItems">
           Food Items
+        </NavLink>
+        <NavLink className="nav-link-button" to="/reviews">
+          Reviews
         </NavLink>
         <ProfileButton user={sessionUser} />
       </div>

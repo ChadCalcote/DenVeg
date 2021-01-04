@@ -34,11 +34,8 @@ const validateRestaurant = [
   check("photoURL")
     .exists({ checkFalsy: true })
     .withMessage("Photo URL must be added.")
-    .isLength({ max: 10000 })
+    .isLength({ max: 100000 })
     .withMessage("Restaurant Name cannot exceed 1000 characters."),
-  check("isVegan")
-    .exists({ checkFalsy: true })
-    .withMessage("Must specify if item is vegan."),
 ];
 
 router.get(
@@ -131,7 +128,7 @@ router.post(
   validateRestaurant,
   asyncHandler(async (req, res, next) => {
     const { name, bio, address, photoURL, isVegan } = req.body;
-    const foodItem = db.FoodItem.build({
+    const restaurant = db.Restaurant.build({
       name,
       bio,
       address,
@@ -140,7 +137,7 @@ router.post(
     });
     const validatorErrors = validationResult(req);
     if (validatorErrors.isEmpty()) {
-      await foodItem.save();
+      await restaurant.save();
       res.json({
         name,
         bio,

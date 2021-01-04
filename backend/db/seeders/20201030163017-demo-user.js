@@ -30,7 +30,7 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete('Users', {
-      id: { [Op.between]: [1, 3] }
+      id: { [Op.between]: [1, 10] }
     }, {});
   }
 };
