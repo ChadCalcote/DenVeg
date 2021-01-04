@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import Home from './components/Home';
 import UploadPictureForm from './components/UploadPictureForm';
 import FoodItemsPage from "./components/FoodItemsPage";
+import RestaurantsPage from "./components/RestaurantsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,11 +31,14 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path='/testing'>
+          <Route path="/testing">
             <UploadPictureForm />
           </Route>
-          <Route path='/foodItems'>
+          <Route path="/foodItems">
             <FoodItemsPage />
+          </Route>
+          <Route path="/restaurants">
+            <RestaurantsPage />
           </Route>
         </Switch>
       )}
