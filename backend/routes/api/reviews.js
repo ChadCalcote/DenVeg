@@ -31,13 +31,10 @@ const validateReview = [
   check("foodItemId")
     .exists({ checkFalsy: true })
     .withMessage("Food Item ID must be specified."),
-  check("userId")
-    .exists({ checkFalsy: true })
-    .withMessage("User ID must be specified."),
   check("photoUrl")
     .exists({ checkFalsy: true })
     .withMessage("Must specify a photo URL.")
-    .isLength({ max: 1000 })
+    .isLength({ max: 100000 })
     .withMessage("Photo URL cannot be longer than 1000 characters."),
   check("reviewText")
     .exists({ checkFalsy: true })
@@ -110,11 +107,11 @@ router.post(
   validateReview,
   asyncHandler(async (req, res, next) => {
     const { heading, rating, foodItemId, photoUrl, reviewText } = req.body;
-    const review = db.FoodItem.build({
+    const review = db.Review.build({
       heading,
       rating,
       foodItemId,
-      userId: req.session.auth.userId,
+      userId: 1,
       photoUrl,
       reviewText,
     });
@@ -125,7 +122,6 @@ router.post(
         heading,
         rating,
         foodItemId,
-        userId,
         photoUrl,
         reviewText
       });

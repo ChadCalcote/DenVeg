@@ -16,7 +16,7 @@ module.exports = {
           },
           {
             heading: "My absolute favorite dish!",
-            rating: 2,
+            rating: 5,
             foodItemId: 2,
             userId: 2,
             photoUrl:

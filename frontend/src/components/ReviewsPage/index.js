@@ -8,7 +8,7 @@ const Review = ({ theReview }) => {
     <div>
       <h3>{theReview.heading}</h3>
       <h3>Rating: {theReview.rating}</h3>
-      <img alt="restaurant" src={theReview.photoUrl} />
+      <img alt="review" src={theReview.photoUrl} />
     </div>
   );
 };
@@ -23,7 +23,7 @@ const ReviewsPage = () => {
     e.preventDefault();
 
     // Post to Database
-    const response = await fetch("/api/restaurants/create", {
+    const response = await fetch("/api/reviews/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -86,6 +86,7 @@ const ReviewsPage = () => {
           />
         </div>
         <div>
+          <label htmlFor="foodItemId">Food Item: </label>
           <select
             name="foodItemId"
             onChange={(e) => setFoodItemId(e.target.value)}
@@ -98,6 +99,15 @@ const ReviewsPage = () => {
             <option>{2}</option>
             <option>{3}</option>
           </select>
+        </div>
+        <div>
+          <label htmlFor="reviewText">Review: </label>
+          <textarea
+            id="reviewText"
+            name="reviewText"
+            onChange={(e) => setReviewText(e.target.value)}
+            value={reviewText}
+          />
         </div>
         <div>
           <label htmlFor="photoUrl">Photo Url: </label>

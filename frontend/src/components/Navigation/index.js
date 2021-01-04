@@ -5,15 +5,6 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 
-/* <ul id="top-nav-bar"> */
-      /* <li>
-        <h2>DenVeg</h2>
-      </li>
-      <li>
-        <NavLink exact to="/">Home</NavLink> */
-    //   </li>
-    // </ul>
-
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
