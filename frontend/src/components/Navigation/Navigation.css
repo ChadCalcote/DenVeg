@@ -18,11 +18,14 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px;
+  background-color: #3e4444
 }
 
-.nav-link {
+.nav-link-button {
   text-decoration: none;
   margin-right: 20px;
+  color: #82b74b;
+  font-family: 'URW Chancery L', cursive;
 }
 
 .nav-container {
@@ -32,9 +35,15 @@
 }
 
 .header {
-  font-family: 'Darker Grotesque', sans-serif;
-  color: green;
+  font-family: 'URW Chancery L', cursive;
+  color: #82b74b;
   font-size: 45px;
+  text-decoration: none;
+}
+
+.headerImage {
+  width: 100px;
+  height: 70px;
 }
 
 .button {
