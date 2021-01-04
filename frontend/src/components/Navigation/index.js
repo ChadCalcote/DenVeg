@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
-import picture from './Broccoli.png';
+import logo from './DenVegLogo.png';
 
 /* <ul id="top-nav-bar"> */
       /* <li>
@@ -43,7 +43,7 @@ function Navigation({ isLoaded }){
   return (
     <div className="top-nav-bar">
       <NavLink className="header nav-link" exact to="/">
-        Home
+        DenVeg
       </NavLink>
       <div className="nav-container">{isLoaded && sessionLinks}</div>
     </div>
