@@ -9,7 +9,7 @@ import Home from './components/Home';
 import UploadPictureForm from './components/UploadPictureForm';
 import FoodItemsPage from "./components/FoodItemsPage";
 import RestaurantsPage from "./components/RestaurantsPage";
-
+import ReviewsPage from './components/ReviewsPage';
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -39,6 +39,9 @@ function App() {
           </Route>
           <Route path="/restaurants">
             <RestaurantsPage />
+          </Route>
+          <Route path="/reviews">
+            <ReviewsPage />
           </Route>
         </Switch>
       )}
