@@ -40,6 +40,8 @@ app.use(
   })
 );
 
+app.use(express.static(path.resolve("./public/")));
+
 app.use(routes); // Connect all the routes
 
 // Catch unhandled requests and forward to error handler.
