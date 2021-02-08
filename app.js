@@ -41,7 +41,7 @@ app.use(
   })
 );
 
-app.use(express.static(path.resolve('./client/public')));
+app.use(express.static(path.resolve('./public')));
 
 app.use(routes); // Connect all the routes
 
