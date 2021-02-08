@@ -5,6 +5,7 @@ const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const { ValidationError } = require('sequelize');
+const path = require('path');
 
 const routes = require('./routes');
 const { environment } = require('./config');
@@ -40,7 +41,7 @@ app.use(
   })
 );
 
-app.use(express.static(path.resolve("./client/public")));
+app.use(express.static(path.resolve('./client/public')));
 
 app.use(routes); // Connect all the routes
 
