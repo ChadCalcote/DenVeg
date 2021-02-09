@@ -42,7 +42,7 @@ app.use(
 );
 
 // app.use(express.static(path.resolve('./client/public')));
-app.use("/static", express.static(path.join(__dirname, "./client/public")));
+app.use("/static", express.static(path.join(__dirname, "client/public")));
 
 app.use(routes); // Connect all the routes
 
